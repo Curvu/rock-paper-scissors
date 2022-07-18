@@ -12,4 +12,5 @@ button {
     background-color: #00b7ff;
     border: 1px solid gray;
     border-radius: 16px;
+    cursor: pointer;
 }
