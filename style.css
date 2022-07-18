@@ -35,10 +35,6 @@ button {
     border-radius: 16px;
 }
 
-span {
-    color: black;
-}
-
-.machine {
-
+.winner {
+    font-size: 16px;    
 }
