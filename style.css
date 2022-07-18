@@ -2,8 +2,9 @@ body {
     margin: 0px;
     height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    flex-direction: column;
 }
 
 button {
@@ -13,4 +14,31 @@ button {
     border: 1px solid gray;
     border-radius: 16px;
     cursor: pointer;
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: space-between;
+    font-size: 30px;
+    font-weight: 300;
+    font-family: 'Courier New', Courier, monospace;
+    width: 500px;
+}
+
+.you,
+.machine {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 25px;
+    border: 3px solid blue;
+    border-radius: 16px;
+}
+
+span {
+    color: black;
+}
+
+.machine {
+
 }
