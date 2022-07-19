@@ -49,3 +49,8 @@ button:hover {
     width: 600px;
     text-align: center;
 }
+
+#yp,
+#cp {
+    transition: all .3s ease-in-out;
+}
