@@ -25,8 +25,20 @@ function getComputerChoice() {
 
 function calculateWinner(choice, computer) {
     if(choice === computer);
-    else if(choice === 'rock' && computer === 'paper' || choice === 'paper' && computer === 'scissors' || choice === 'scissors' && computer === 'rock') cp++;
-    else yp++;
+    else if(choice === 'rock' && computer === 'paper' || choice === 'paper' && computer === 'scissors' || choice === 'scissors' && computer === 'rock') {
+        cp++;
+        compScore.style.fontSize = '40px';
+        setTimeout(() => {
+            compScore.style.fontSize = '30px';
+        }, 300)
+    }
+    else {
+        yp++;
+        yScore.style.fontSize = '40px';
+        setTimeout(() => {
+            yScore.style.fontSize = '30px';
+        }, 300)
+    }
 
     if (cp === 10) {
         cp = 0;
@@ -53,7 +65,7 @@ function renderScore() {
         document.getElementById('yp').textContent = yp;
     } catch (err) {
         // console.log('');
-        // Não precisa de nada aqui
+        // Não precisa de nada
     }
 }
 
