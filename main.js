@@ -1,5 +1,3 @@
-const btns = document.querySelectorAll('.btns');
-
 
 const compScore = document.getElementById('cp');
 const yScore = document.getElementById('yp');
@@ -8,13 +6,15 @@ let yp = parseInt(yScore.textContent);
 
 const winner = document.getElementById('winner');
 
+winner.style.display = 'none'
+
+const btns = document.querySelectorAll('.btns');
 btns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
         let choice = e.target.id
-        console.log(choice);
         let computer = getComputerChoice();
-        console.log(computer);
         calculateWinner(choice, computer);
+        renderChoices(choice, computer);
     });
 });
 
@@ -24,22 +24,37 @@ function getComputerChoice() {
 }
 
 function calculateWinner(choice, computer) {
-    if(choice === computer) winner.innerText = 'Draw!'
-    else if(choice === 'rock' && computer === 'paper' || choice === 'paper' && computer === 'scissors' || choice === 'scissors' && computer === 'rock') {
-        cp++;
-        winner.innerText = 'Computer Won the point!'
-    }
-    else {
-        yp++;
-        winner.innerText = 'You won the point!'
+    if(choice === computer);
+    else if(choice === 'rock' && computer === 'paper' || choice === 'paper' && computer === 'scissors' || choice === 'scissors' && computer === 'rock') cp++;
+    else yp++;
+
+    if (cp === 10) {
+        cp = 0;
+        yp = 0;
+        document.body.innerHTML = (
+            '<p>You lost! Noob 🤓</p><button onclick="window.location.reload()">Play again</button>'
+        );
+        document.body.style.fontSize = '42px';
+    } else if (yp === 10) {
+        yp = 0;
+        cp = 0;
+        document.body.innerHTML = (
+            'You won! Pro 😎<button onclick="window.location.reload()">Play again</button>'
+        );
+        document.body.style.fontSize = '42px';
     }
     renderScore();
+    whosLoosing();
 }
 
 function renderScore() {
-    document.getElementById('cp').textContent = cp;
-    document.getElementById('yp').textContent = yp;
-    whosLoosing();
+    try {
+        document.getElementById('cp').textContent = cp;
+        document.getElementById('yp').textContent = yp;
+    } catch (err) {
+        // console.log('');
+        // Não precisa de nada aqui
+    }
 }
 
 function whosLoosing() {
@@ -53,4 +68,20 @@ function whosLoosing() {
         compScore.style.color = 'black';
         yScore.style.color = 'black';
     }
+}
+
+
+const playerChoice = document.getElementById('player');
+const computerChoice = document.getElementById('computer');
+
+function renderChoices(playerC, computerC) {
+    playerChoice.innerHTML = textToEmote(playerC);
+    computerChoice.innerHTML = textToEmote(computerC);
+    winner.style.display = 'block';
+}
+
+function textToEmote(txt) {
+    if (txt === 'rock') return '✊'
+    else if (txt === 'paper') return '🖐️'
+    else if (txt === 'scissors') return '✌️'
 }
