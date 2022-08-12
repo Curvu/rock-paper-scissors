@@ -23,31 +23,32 @@ function getComputerChoice() {
     return choices[Math.floor(Math.random() * choices.length)]
 }
 
+function onWinRound(winner) {
+    winner.classList.add('onWin')
+    setTimeout(() => {
+        winner.classList.remove('onWin')
+    }, 300)
+}
+
 function calculateWinner(choice, computer) {
     if(choice === computer);
     else if(choice === 'rock' && computer === 'paper' || choice === 'paper' && computer === 'scissors' || choice === 'scissors' && computer === 'rock') {
         cp++;
-        compScore.style.fontSize = '40px';
-        setTimeout(() => {
-            compScore.style.fontSize = '30px';
-        }, 300)
+        onWinRound(compScore)
     }
     else {
         yp++;
-        yScore.style.fontSize = '40px';
-        setTimeout(() => {
-            yScore.style.fontSize = '30px';
-        }, 300)
+        onWinRound(yScore)
     }
 
-    if (cp === 10) {
+    if (cp === 5) {
         cp = 0;
         yp = 0;
         document.body.innerHTML = (
             '<p>You lost! Noob 🤓</p><button onclick="window.location.reload()">Play again</button>'
         );
         document.body.style.fontSize = '42px';
-    } else if (yp === 10) {
+    } else if (yp === 5) {
         yp = 0;
         cp = 0;
         document.body.innerHTML = (
@@ -64,7 +65,6 @@ function renderScore() {
         document.getElementById('cp').textContent = cp;
         document.getElementById('yp').textContent = yp;
     } catch (err) {
-        // console.log('');
         // Não precisa de nada
     }
 }
