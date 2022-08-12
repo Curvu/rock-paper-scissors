@@ -5,16 +5,19 @@ body {
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
+    background-color: #9a8f97;
+    color: #e9e3e6;
 }
 
 button {
     font-size: 50px;
     padding: 10px;
-    background-color: #00b7ff;
-    border: 1px solid gray;
+    background-color: #340068;
+    border: 1px solid #330066;
     border-radius: 16px;
     cursor: pointer;
     user-select: none;
+    color: #e9e3e6;
     transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -36,9 +39,13 @@ button:hover {
     flex-direction: column;
     text-align: center;
     padding: 25px;
-    border: 3px solid blue;
+    border: 3px solid orange;
     border-radius: 16px;
     width: 200px;
+}
+
+.onWin {
+    transform: scale(1.4);
 }
 
 #winner {
